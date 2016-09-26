@@ -17,7 +17,6 @@ class Courses_model extends CI_Model {
 
 	public function retrieve_labs(){
 		$prof=$this->session->userdata('prof');
-		//$query_str="SELECT cs.course_id as course_id, cs.official_course_id as official_course_id, cr.classroom as classroom, pr.name || ' ' || pr.surname as professor_name, cs.type as type, cs.name as name, cs.semester as semester FROM courses cs JOIN professors pr ON cs.professor_id=pr.professor_id JOIN classrooms cr ON cs.classroom_id = cr.classroom_id WHERE pr.professor_id=".$prof['ref_id']." AND cs.type='lab'";
 		$query_str="SELECT cs.course_id as course_id, cs.official_course_id as official_course_id, cr.classroom as classroom, pr.name || ' ' || pr.surname as professor_name, cs.type as type, cs.name as name, cs.semester as semester, get_classes(course_id) as classes_xml FROM courses cs JOIN professors pr ON cs.professor_id=pr.professor_id JOIN classrooms cr ON cs.classroom_id = cr.classroom_id WHERE pr.professor_id=".$prof['ref_id']." AND cs.type='lab';";
 		$query=$this->db->query($query_str);
 		$result=$query->result_array();

@@ -17,8 +17,6 @@ class Students_choices_model extends CI_Model {
 	}
 
 	public function get_students_choices_info($course_id) {
-    	
-		/*$query_str='select course_id, official_course_id, name, type, (select count(student_id) from course_selections WHERE course_id='.$course_id.') as total_registered , (	select count(student_id) from course_selections WHERE course_id='.$course_id.' AND timeframe_selection=0) as total_pending_class FROM courses WHERE course_id='.$course_id.';';*/
 
 		$query_str = "select course_id, official_course_id, name, type, (select count(student_id) from course_selections WHERE course_id=".$course_id.") as total_registered , (select count(student_id) from course_selections WHERE course_id=".$course_id." AND timeframe_selection=0) as total_pending_class, 
 ---day_time_class_1 + selected_class_1

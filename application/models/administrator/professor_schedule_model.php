@@ -8,7 +8,6 @@ class Professor_schedule_model extends CI_Model {
 
 	}
 	public function retrieve_prof_schedule($prof) {
-    	//$prof=$this->input->post('prof');
 		$query_str = "SELECT retrieve_schedule_xml(1001".$prof.") AS result_xml";
 		$query = $this->db->query($query_str);
 		$row = $query->row();

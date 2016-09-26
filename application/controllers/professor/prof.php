@@ -13,8 +13,6 @@ class Prof extends CI_Controller {
 
         public function red_to_panel(){
                 $uri_str = uri_string();
-		//echo uri_string();
-		//die();
                 $prof = explode("/",uri_string());
                 if (!empty($prof[3])) {
                         $username = $prof[3];
@@ -27,21 +25,13 @@ class Prof extends CI_Controller {
                                 'ref_id' => $ref_id,
                                 'is_admin' => $is_admin
                                 );
-                        //$this->session->unset_userdata('student');
-                        //$this->session->sess_destroy();
                         $this->session->set_userdata('prof',$data);
-                        //$this->index(); 
                         return true;
 
                 }
         }
 
 	public function _is_logged_in () {
-
-//                if($this->red_to_panel() == true){
-//                        redirect('professor/prof');
-//                        return false;
-//                }
         $prof = $this->session->userdata('prof');
 		
 		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
@@ -52,10 +42,6 @@ class Prof extends CI_Controller {
 		}
 
 		if ( $prof['user_type']!='prof') {
-			//echo "prin";
-			//print_r($prof);
-			//echo "meta";
-			//die();
 			redirect('https://accounts.rdetl.teiath.gr/secure/');
 			die();
 		}
@@ -75,8 +61,6 @@ class Prof extends CI_Controller {
 
 	public function index()
 	{
-		//$this->load->view('accordion_test');
-		//return false;
 		$this->load->helper('professor/messages');
 		$trig=$this->session->flashdata('msg');
 		$data['query_messages']=create_msgs($trig);
@@ -123,14 +107,8 @@ class Prof extends CI_Controller {
 
 	public function ajax_update_classes(){
 		
-		/*foreach ($this->input->post('onoffswitch')  as $value) {
-			echo $value;
-		}*/ 
 		$this->load->model('professor/courses_model');
 		$query = $this->courses_model->update_labs_classes();
-		//$classes_choice_array = $this->input->post('onoffswitch');
-		//echo $classes_choice_array;
-		/*echo '<html>'.$this->input->post('classroom').'<html>';*/
 		echo $this->create_labs();
 		
 	}
@@ -153,9 +131,6 @@ class Prof extends CI_Controller {
 
             foreach ($classes as $class) {
                 $class_array = json_decode($class['retrieve_classes_json'],true);
-
-//		print_r($class_array);
-//		die();
                 if (array_key_exists('day', $class_array)) {
                     $course_name = $class_array['course_name'];
                     if ($cl_counter != 0) {
@@ -215,7 +190,6 @@ class Prof extends CI_Controller {
 		{
 			$error = array('error' => $this->upload->display_errors());
 			echo $this->upload->display_errors();
-			//$this->load->view('upload_form', $error);
 		}
 		else
 		{
@@ -262,7 +236,6 @@ class Prof extends CI_Controller {
 			}
 		}
 		delete_files($this->upload->upload_path.$this->upload->file_name);
-		 //$this->load->view('upload_success', $data);
 	}
 
     public function create_prof_schedule() {

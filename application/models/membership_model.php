@@ -48,11 +48,6 @@ class Membership_model extends CI_Model {
 	}
 
 	public function create_account() {
-		//$this->db->where('key' ,$key);
-		//$temp_users = $this->db->get('temp_users');
-
-		//if ($temp_users){
-		//	$row = $temp_users->row();
 			$new_member_insert_data = array('first_name' => $this->input->post('first_name'),
 											'last_name' => $this->input->post('last_name'),
 											'email_address' => $this->input->post('email'),
@@ -69,14 +64,7 @@ class Membership_model extends CI_Model {
 											);
 			$insert = $this->db->insert('students' , $new_member_insert_data);
 			$insert_2 = $this->db->insert('users' , $new_member_insert_data_2);
-
-			//if($insert){
-			//	$this->db->where('key' ,$key);
-			//	$temp_users = $this->db->delete('temp_users');
-
 				return true;
-			//}else return false;
-		//}
 	}
 
 }

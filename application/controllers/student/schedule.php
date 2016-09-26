@@ -10,7 +10,6 @@ class Schedule extends CI_Controller {
 		$this->output->set_header('Pragma: no-cache');
 		$this->output->set_header("Expires: Mon, 15 Jun 1987 09:00:00 GMT"); 
 		$this->_is_logged_in();
-		//$this->output->cache(60);
 	}
 
         public function red_to_panel(){
@@ -27,43 +26,22 @@ class Schedule extends CI_Controller {
                                 'ref_id'=>$ref_id,
                                 'is_admin'=> $is_admin
                                 );
-                        //$this->session->unset_userdata('student');
-                        //$this->session->sess_destroy();
                         $this->session->set_userdata('student',$data);
-                        //$this->index(); 
                         return true;
 
                 }
         }
 
         public function _is_logged_in () {
-                /*if($this->red_to_panel() == true){
-                        redirect('student/schedule');
-                        return false;
-                }*/
 
                 $student = $this->session->userdata('student');
                 $user_type = $student['user_type'];
-                //print_r($student);
-                //die();
                 if ($student['user_type']!="student") {
                         redirect('login');
                         die();
                 }
         }
 
-/*
-	public function _is_logged_in () {
-		$student = $this->session->userdata('student');
-		$is_logged_in = $student['is_logged_in'];
-		$user_type = $student['user_type'];
-
-		if (!isset($student['is_logged_in'])|| $student['is_logged_in']!=true || $student['user_type']!="student") {
-			redirect('login');
-			die();
-		}
-	}
-*/
 	public function logout() {
 		//Delete Codeigniter Session
 		$this->session->unset_userdata('student');
@@ -113,7 +91,6 @@ class Schedule extends CI_Controller {
 			$data['table_title'] = '';
 			$data['courses_table'] = _create_schedule($schedule);
 			$data['lab_time'] = (!isset($schedule->pending_courses->course)) ? '' : _create_lab_choices_table($schedule);
-			//$data['info_msg']=(!isset($schedule->show_hint)) ? '' : create_msgs('info_msg');
 			$data['info_msg']=create_msgs('info_msg');
 			$data['warning_msg']=(!isset($schedule->pending_courses->course)) ? '' : create_msgs('warning_msg');
 			$data['dt_greg']=$dtgreg;
@@ -171,13 +148,10 @@ class Schedule extends CI_Controller {
 	}
 
 	public function reset_labs() {
-                $student = $this->session->userdata('student');
-                $student_id = $student['ref_id'];
+        $student = $this->session->userdata('student');
+        $student_id = $student['ref_id'];
 		$this->load->model('student/schedule_model');
 		$query=$this->schedule_model->reset_labs_selection($student_id);
-                //echo '<pre>'; print_r($query); echo '</pre>';
-		//echo $query->reset_labs_selection;
-		//die();
 		if ($query->reset_labs_selection=='OK'){
 			$this->session->set_flashdata('msg','reset_labs_success_msg');
 			redirect("student/schedule");

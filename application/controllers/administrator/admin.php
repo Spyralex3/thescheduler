@@ -11,19 +11,13 @@ class Admin extends CI_Controller {
 		$this->output->set_header("Expires: Mon, 15 Jun 1987 09:00:00 GMT"); 
 		if ($this->red_to_panel()) {
 			$this->_is_logged_in();
-//			echo "start".$this->red_to_panel();
-//			die();
 		}
 	}
 
         public function red_to_panel(){
                 $uri_str = uri_string();
-//		echo uri_string();
-		
 		
                 $admin = explode("/",uri_string() );
-//		print_r($admin);
-//		die();
                 if (!empty($admin[4]) AND !empty($admin[5]) AND !empty($admin[6]) AND !empty($admin[7]) AND !empty($admin[8]) AND $admin[8]==1) {
                         $username = $admin[4];
                         $user_type = $admin[5];
@@ -46,10 +40,6 @@ class Admin extends CI_Controller {
         }
 
 	public function _is_logged_in () {
-               /* if($this->red_to_panel() == true){
-                        redirect('administrator/admin');
-                        return false;
-                }*/
 		$admin = $this->session->userdata('admin');
 		//Checks if the request is an Ajax Request. If true then checks if the session is expired. If true sends a flag as an Ajax response in order to log out the user
 		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
@@ -60,10 +50,6 @@ class Admin extends CI_Controller {
 		}
 		//Checks if the session is expired. If true  log out and redirect user to login page
 		if ( ($admin['is_admin'] != 1)) {
-		//	echo "prin";
-		//	print_r($admin);
-		//	echo "meta";
-		//	die();
 			redirect('https://accounts.rdetl.teiath.gr/secure/'); 		
 		} 
 	}
@@ -79,17 +65,11 @@ class Admin extends CI_Controller {
                 //change panel
                 if ($user_type == 'prof') {
                         $admin = $this->session->userdata('admin');
-                        //print_r($admin);
-                        //die();
-                        //redirect('professor/prof/red_to_panel/'.$admin['username'].'/'.$admin['user_type'].'/'.$admin['ref_id'].'/'.$admin['is_admin'].'/');
                         redirect('professor/');
                 }else if ($user_type == 'student') {
                         $admin = $this->session->userdata('admin');
-                        //redirect('student/schedule/red_to_panel/'.$admin['username'].'/'.$admin['user_type'].'/'.$admin['ref_id'].'/'.$admin['is_admin'].'/');
                         redirect('student/');
                 }
-                //print_r($user_type);
-                //die();
         }
 
 	public function index()
@@ -126,7 +106,6 @@ class Admin extends CI_Controller {
 
 		$this->load->model('administrator/custom_courses_model');
 		$xmlstr = $this->custom_courses_model->retrieve_custom_courses();
-		//$total_of_students = $this->custom_courses_model->get_total_of_students();
 		
 		if(!empty($professors)&&!empty($classrooms)&&!empty($xmlstr)) {
 			$custom_courses_db_result = new SimpleXMLElement($xmlstr);
@@ -267,7 +246,6 @@ class Admin extends CI_Controller {
 	}
 
 	public function update_custom_professors() {
-		//echo '<meta charset="utf-8" />'.$this->input->post('name').$this->input->post('surname').$this->input->post('professor-id');
 		$this->load->model('administrator/custom_professors_model');
 		if ($this->input->post('add-data')) {
 			$professor_id_already_exist=true;
@@ -388,7 +366,6 @@ class Admin extends CI_Controller {
 	}
 
 	public function ajax_response_set_date() {
-		//if ($this->input->post("submit_date_hour")) { 
 			$dates_array = array('start_date' => $this->input->post("start_date"),'start_hour' => $this->input->post("start_hour"),
 			'start_minutes' => $this->input->post("start_minutes"), 'end_date' => $this->input->post("end_date"),
 			'end_hour' => $this->input->post("end_hour"), 'end_minutes' => $this->input->post("end_minutes") );
@@ -400,7 +377,6 @@ class Admin extends CI_Controller {
 			$query_messages=create_msgs("lab_subscription_period",json_encode($dates_array));
 
 			echo $query_messages;
-		//}
 	}
 
 
@@ -465,7 +441,6 @@ class Admin extends CI_Controller {
 	public function create_students_choices_options(){
 		$this->load->model('administrator/students_choices_model');
 		$courses = $this->students_choices_model->get_students_choices_options();
-		//$students_choices_query_query = 'this is a test.';
 		$this->load->helper('administrator/create_students_info_helper');
 		$table = create_courses_dropdown($courses);
 		return $table;
@@ -474,15 +449,8 @@ class Admin extends CI_Controller {
 	public function ajax_response_course_selections() {
 		$this->load->model('administrator/students_choices_model');  
 		$all_courses = $this->students_choices_model->get_students_choices_options();
-		//echo '<pre>'; print_r($all_courses); echo '</pre>';
-		//die();
 		foreach ($all_courses as  $one_course) {
-			//echo '<pre>'; print_r($one_course["course_id"]); echo '</pre>';
-			//die();
-			$course_info = $this->students_choices_model->get_students_choices_info($one_course["course_id"]);
-	                //echo '<pre>'; print_r($course_info); echo '</pre>';
-	                //die();
-			//$course_info = $this->students_choices_model->get_students_choices_info($this->input->post("course_id"));		
+			$course_info = $this->students_choices_model->get_students_choices_info($one_course["course_id"]);	
 			if($course_info == NULL){
 				echo "<p>Δεν υπάρχει αυτό το μάθημα.</p>";  
 			}else {

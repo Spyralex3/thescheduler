@@ -5,16 +5,10 @@
 		<link rel="shortcut icon" href="<?php echo base_url('assets/icons/Logo_teiath.ico'); ?>">
 		<title>TEI Αθήνας</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
-	<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"> -->
 
 		<link href="<?php echo base_url('assets/bootstrap/css/professor/professor-view.css'); ?>" rel="stylesheet"> 
 		<link href="<?php echo base_url('assets/jasny_bootstrap/css/jasny-bootstrap.min.css'); ?>" rel="stylesheet" >
 		
-<!--		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-		
-		<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>  -->
 		<script>
 			if (typeof jQuery === "undefined") {
 				 document.write(unescape("%3Cscript src='<?php echo base_url('assets/bootstrap/jquery/jquery-2.0.3.js');?>' type='text/javascript'%3E%3C/script%3E"));
