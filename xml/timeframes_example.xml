@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="timeframes_example.xsl"?>
+
+<timeframes>
+	<timeframe id='101'>
+		<courses>
+			<course>
+				<course_id>12</course_id>
+				<official_course_id>EE-3011</official_course_id>
+				<name>ΗΛΕΚΤΡΟΝΙΚΗ ΣΧΕΔΙΑΣΗ</name>
+				<semester>4</semester>
+				<type>lecture</type>
+				<professor>ΔΗΜΟΣΘΕΝΗΣ ΤΡΙΑΝΤΗΣ</professor>
+				<classroom>K16-113</classroom>
+			</course>
+			<course>
+				<course_id>14</course_id>
+				<official_course_id>EE-4012</official_course_id>
+				<name>ΨΗΦΙΑΚΗ ΕΠΕΞΕΡΓΑΣΙΑ ΣΗΜΑΤΟΣ</name>
+				<semester>6</semester>
+				<type>lab</type>
+				<professor>ΗΛΙΑΣ ΖΩΗΣ</professor>
+				<classroom>K15-103</classroom>
+			</course>
+		</courses>
+	</timeframe>
+	<timeframe id='102'>
+		<courses>
+			<course>
+				<course_id>12</course_id>
+				<official_course_id>EE-3011</official_course_id>
+				<name>ΔΙΚΤΥΑ</name>
+				<semester>4</semester>
+				<type>lecture</type>
+				<professor>ΚΟΥΛΟΥΡΑΣ ΓΡΗΓΟΡΗΣ</professor>
+				<classroom>K16-113</classroom>
+			</course>
+			<course>
+				<course_id>14</course_id>
+				<official_course_id>EE-4012</official_course_id>
+				<name>ΑΝΑΛΟΓΙΚΑ Ι</name>
+				<semester>6</semester>
+				<type>lab</type>
+				<professor>ΣΤΑΥΡΑΚΑΣ ΗΛΙΑΣ</professor>
+				<classroom>K15-103</classroom>
+			</course>
+		</courses>
+	</timeframe>
+</timeframes>

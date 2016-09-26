@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<courses>
+	<course cs_id='4'>
+		<official_course_id>EE-1021</official_course_id>
+		<course_title>ΕΙΣΑΓΩΓΗ ΣΤΑ ΗΛΕΚΤΡΟΝΙΚΑ</course_title>
+		<course_type>lecture</course_type>
+		<semester>1</semester>
+		<professor_name>Ευάγγελος Παπαγιάννης</professor_name>
+		<classroom>K15-105</classroom>
+		<time_intervals>
+			<time>
+				<day>Δευτέρα</day>
+				<hr_begin>08:00</hr_begin>
+				<hr_end>10:00</hr_end>
+			</time>
+			<time>
+				<day>Πέμπτη</day>
+				<hr_begin>11:00</hr_begin>
+				<hr_end>14:00</hr_end>
+			</time>
+		</time_intervals>
+	</course>
+	<course cs_id='9'>
+		<official_course_id>EE-1052</official_course_id>
+		<course_title>ΒΑΣΙΚΕΣ ΔΟΜΕΣ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΥ ΣΥΣΤΗΜΑΤΩΝ</course_title>
+		<course_type>lab</course_type>
+		<semester>2</semester>
+		<professor_name>Κωνσταντίνος Βουδούρης</professor_name>
+		<classroom>K15-102</classroom>
+		<time_intervals>
+			<time>
+				<day>Δευτέρα</day>
+				<hr_begin>08:00</hr_begin>
+				<hr_end>10:00</hr_end>
+			</time>
+			<time>
+				<day>Δευτέρα</day>
+				<hr_begin>10:00</hr_begin>
+				<hr_end>12:00</hr_end>
+			</time>
+			<time>
+				<day>Δευτέρα</day>
+				<hr_begin>12:00</hr_begin>
+				<hr_end>14:00</hr_end>
+			</time>
+		</time_intervals>
+	</course>
+</courses>
